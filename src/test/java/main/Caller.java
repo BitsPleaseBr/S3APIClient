@@ -10,7 +10,7 @@ public class Caller {
 
     try {
 
-      //System.out.println(MethodCallerFactory.gerarToken("diogodklein@gmail.com", "bitsplease").call().getBody());
+      //System.out.println(MethodCallerFactory.selecionarDadosUsuario(1).call().getResponse().getBody());
       System.out.println(MethodCallerFactory.verificarCpf("12312312312").call().getHashBody().get("valido"));
     } catch (GenericApiGatewayException e) {
 
