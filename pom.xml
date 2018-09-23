@@ -85,6 +85,8 @@
 			<version>0.0.1-SNAPSHOT</version>
 			<scope>system</scope>
 			<systemPath>${project.basedir}/lib/S3BD.jar</systemPath>
+			<type>jar</type>
+			<optional>true</optional>
 		</dependency>
 	</dependencies>
 </project>
