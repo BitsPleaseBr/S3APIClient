@@ -75,12 +75,14 @@ public class RequestBuilder extends GenericApiGatewayRequestBuilder {
   public GenericApiGatewayRequest build() {
 
     super.withHeaders(this.headers.getValues());
- 
+    
     if (this.resource.getHttpMethod().equals(HttpMethodName.POST))
-      super.withBody(new ByteArrayInputStream(new Gson().toJson(this.body.getValues()).getBytes()));
+      super.withBody(new ByteArrayInputStream(new Gson().newBuilder().setDateFormat("dd/MM/yyyy").create().toJson(this.body.getValues()).getBytes()));
     
     super.withHttpMethod(this.resource.getHttpMethod());
     super.withResourcePath(this.resource.getPath());
+    
+    System.out.println(new Gson().newBuilder().setDateFormat("dd/MM/yyyy").create().toJson(this.body.getValues()));
     
     return super.build();
   }

@@ -49,8 +49,6 @@ public class ClientBuilder extends GenericApiGatewayClientBuilder {
     super.withEndpoint(endpoint);
     super.withRegion(region);
     
-    System.out.println(getS3ApiKey());
-    
     if (useApiKey)
       super.withApiKey(getS3ApiKey());
 

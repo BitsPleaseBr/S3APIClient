@@ -32,7 +32,7 @@ public class MethodCallerFactory {
 
     Body body = new Body();
 
-    body.putAll(bean.getInfosUser());
+    body.put("infosUser", bean.getInfosUser());
 
     if (bean.getEnderecos().size() > 0)
       body.put("enderecos", bean.getEnderecos());
@@ -44,20 +44,15 @@ public class MethodCallerFactory {
 
       MedicoBean asMedico = (MedicoBean) bean;
 
-      body.putAll(asMedico.getInfosMed());
+      body.put("infosMed", asMedico.getInfosMed());
     } else if (bean instanceof PacienteBean) {
 
       PacienteBean asPaciente = (PacienteBean) bean;
 
-      body.putAll(asPaciente.getInfosPac());
+      body.put("infosPac", asPaciente.getInfosPac());
     }
 
     return new MethodCaller(Users.CADASTRAR, body).withApiKey(true);
-  }
-
-  // users-get
-  public static MethodCaller selecionarUsers() {
-    return new MethodCaller(Users.SELECIONAR);
   }
 
   // users/{id}
@@ -238,15 +233,13 @@ public class MethodCallerFactory {
   public static MethodCaller verificarEmail(String email) {
     
     return new MethodCaller(Verificar.EMAIL)
-                 .withApiKey(true)
-                 .withHeaders(new Headers().put("email", email));
+                 .withApiKey(true).putParameter("email", email);
   }
   
   //verificar/email/{valor}
   public static MethodCaller verificarCpf(String cpf) {
     
     return new MethodCaller(Verificar.CPF)
-                 .withApiKey(true)
-                 .withHeaders(new Headers().put("cpf", cpf));
+                 .withApiKey(true).putParameter("cpf", cpf);
   }
 }

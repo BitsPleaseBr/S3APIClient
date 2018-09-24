@@ -6,7 +6,7 @@ import s3.api.method.resources.Resource;
 public class Users extends Resource {
 
   
-  public static final Users CADASTRAR = new Users(POST), SELECIONAR = new Users(GET);
+  public static final Users CADASTRAR = new Users(POST);
   
   
   protected Users(HttpMethodName httpMethod) {
