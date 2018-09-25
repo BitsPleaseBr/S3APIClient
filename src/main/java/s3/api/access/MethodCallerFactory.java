@@ -85,58 +85,60 @@ public class MethodCallerFactory {
     return new MethodCaller(Id.ATUALIZAR, new Body(bean.getInfosUser())).putParameter("id", userId);
   }
 
-  //users/{id}/dados-usuario
-  //users/{id}/dados-usuario-get
+  // users/{id}/dados-usuario
+  // users/{id}/dados-usuario-get
   public static MethodCaller selecionarDadosUsuario(int userId) {
-    
+
     return new MethodCaller(DadosUsuario.SELECIONAR).putParameter("id", userId);
   }
-  
-  //users/{id}/dados-usuario-patch
+
+  // users/{id}/dados-usuario-patch
   public static MethodCaller atualizarDadosUsuario(UserBean bean, UserInfo... infos) {
-    
+
     Body body = new Body();
-    
+
     for (UserInfo info : infos)
       body.put(String.valueOf(info), bean.getInfo(info));
-    
+
     int userId = (Integer) bean.getInfo(UserInfo.ID);
     return new MethodCaller(DadosUsuario.ATUALIZAR_PARCIAL, body).putParameter("id", userId);
   }
-  
-  //users/{id}/dados-usuario-put
+
+  // users/{id}/dados-usuario-put
   public static MethodCaller atualizarDadosUsuario(UserBean bean) {
-    
+
     int userId = (Integer) bean.getInfo(UserInfo.ID);
-    return new MethodCaller(DadosUsuario.ATUALIZAR, new Body(bean.getInfosUser())).putParameter("id", userId);
+    return new MethodCaller(DadosUsuario.ATUALIZAR, new Body(bean.getInfosUser()))
+        .putParameter("id", userId);
   }
-  
-  //users/{id}/dados-paciente
-  //users/{id}/dados-paciente-get
+
+  // users/{id}/dados-paciente
+  // users/{id}/dados-paciente-get
   public static MethodCaller selecionarDadosPaciente(int userId) {
-    
+
     return new MethodCaller(DadosPaciente.SELECIONAR).putParameter("id", userId);
   }
-  
-  //users/{id}/dados-paciente-patch
+
+  // users/{id}/dados-paciente-patch
   public static MethodCaller atualizarDadosPaciente(PacienteBean bean, PacienteInfo... infos) {
-    
+
     Body body = new Body();
-    
+
     for (PacienteInfo info : infos)
       body.put(String.valueOf(info), info);
-    
+
     int userId = (Integer) bean.getInfo(PacienteInfo.IDUser);
     return new MethodCaller(DadosPaciente.ATUALIAR_PARCIAL, body).putParameter("id", userId);
   }
-  
-  //users/{id}/dados-paciente-put
+
+  // users/{id}/dados-paciente-put
   public static MethodCaller atualizarDadosPaciente(PacienteBean bean) {
-    
+
     int userId = (Integer) bean.getInfo(PacienteInfo.IDUser);
-    return new MethodCaller(DadosPaciente.ATUALIZAR, new Body(bean.getInfosPac())).putParameter("id", userId);
+    return new MethodCaller(DadosPaciente.ATUALIZAR, new Body(bean.getInfosPac()))
+        .putParameter("id", userId);
   }
-  
+
   // users/{id}/dados-profissional
   // users/{id}/dados-profissional-get
   public static MethodCaller selecionarDadosProfissional(int userId) {
@@ -195,23 +197,23 @@ public class MethodCallerFactory {
     return new MethodCaller(Telefones.ATUALIZAR, new Body(bean.getInfosTel())).putParameter("id",
         userId);
   }
-  
-  //users/{id}/especializacoes
-  //users/{id}/especializacoes-get
+
+  // users/{id}/especializacoes
+  // users/{id}/especializacoes-get
   public static MethodCaller selecionarEspecializacao() {
-    
+
     return null;
   }
-  
-  //users/{id}/especializacoes-post
+
+  // users/{id}/especializacoes-post
   public static MethodCaller cadastrarEspecializacao() {
-    
+
     return null;
   }
-  
-  //users/{id}/especializacoes-put
+
+  // users/{id}/especializacoes-put
   public static MethodCaller atualizarEspecializacao() {
-    
+
     return null;
   }
 
@@ -227,19 +229,20 @@ public class MethodCallerFactory {
 
     return new MethodCaller(Tokens.SELECIONAR).withApiKey(true).withHeaders(headers);
   }
-  
-  //verificar
-  //verificar/email/{valor}
+
+  // verificar
   public static MethodCaller verificarEmail(String email) {
-    
-    return new MethodCaller(Verificar.EMAIL)
-                 .withApiKey(true).putParameter("email", email);
+
+    return new MethodCaller(Verificar.EMAIL).withApiKey(true).putParameter("email", email);
+  }
+
+  public static MethodCaller verificarCpf(String cpf) {
+
+    return new MethodCaller(Verificar.CPF).withApiKey(true).putParameter("cpf", cpf);
   }
   
-  //verificar/email/{valor}
-  public static MethodCaller verificarCpf(String cpf) {
-    
-    return new MethodCaller(Verificar.CPF)
-                 .withApiKey(true).putParameter("cpf", cpf);
-  }
+ public static MethodCaller confirmarEmail(String fullToken) {
+
+   return new MethodCaller(Verificar.CONFIRMAR_EMAIL, new Body().put("token", fullToken));
+ }
 }

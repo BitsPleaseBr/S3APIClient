@@ -7,7 +7,7 @@ import s3.api.method.resources.users.Users;
 public class Verificar extends Resource {
   
   
-  public static final Verificar EMAIL = new Verificar(HEAD), CPF = new Verificar(HEAD);
+  public static final Verificar EMAIL = new Verificar(HEAD), CPF = new Verificar(HEAD), CONFIRMAR_EMAIL = new Verificar(POST);
   
   
   public Verificar(HttpMethodName httpMethod) {

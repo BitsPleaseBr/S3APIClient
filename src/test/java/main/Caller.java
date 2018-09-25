@@ -1,6 +1,11 @@
 package main;
 
+import com.google.gson.Gson;
 import ca.ryangreen.apigateway.generic.GenericApiGatewayException;
+import model.bean.EnderecoBean;
+import model.bean.TelefoneBean;
+import model.bean.info.EnderecoInfo;
+import model.bean.info.TelefoneInfo;
 import s3.api.access.MethodCallerFactory;
 
 public class Caller {
@@ -10,7 +15,28 @@ public class Caller {
 
     try {
       
-      System.out.println(MethodCallerFactory.verificarCpf("09313177978").call().getResponse().getHttpResponse().getStatusCode());
+      /*EnderecoBean eb = new EnderecoBean();
+      eb.setInfo(EnderecoInfo.Cep, "123");
+      eb.setInfo(EnderecoInfo.Estado, "SC");
+      eb.setInfo(EnderecoInfo.Cidade, "Blumenau");
+      eb.setInfo(EnderecoInfo.Bairro, "Itoupava Central");
+      eb.setInfo(EnderecoInfo.Rua, "Erwin Henschel");
+      eb.setInfo(EnderecoInfo.Numero, 643);
+      eb.setInfo(EnderecoInfo.Complemento, "Casa");
+      eb.setInfo(EnderecoInfo.IDUser, 1);
+      eb.setInfo(EnderecoInfo.Tipo, eb.RESIDENCIAL);
+      
+      System.out.println(new Gson().newBuilder().setPrettyPrinting().create().toJson(eb));
+      
+      TelefoneBean tb = new TelefoneBean();
+      tb.setInfo(TelefoneInfo.Tipo, tb.TELEFONE);
+      tb.setInfo(TelefoneInfo.Numero, "12345-1234");
+      tb.setInfo(TelefoneInfo.IDUser, 1);
+      
+      System.out.println(new Gson().newBuilder().setPrettyPrinting().create().toJson(tb));*/
+      
+      System.out.println(MethodCallerFactory.verificarEmail("nathangabriel97@gmail.com").call().getResponse().getHttpResponse().getStatusCode() == 200);
+      System.out.println(MethodCallerFactory.verificarCpf("09792442936").call().getResponse().getHttpResponse().getStatusCode() == 200);
       
       /*PacienteBean pb = new PacienteBean();
       
