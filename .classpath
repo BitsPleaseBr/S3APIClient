@@ -24,5 +24,6 @@
 		</attributes>
 	</classpathentry>
 	<classpathentry kind="lib" path="lib/S3BD.jar"/>
+	<classpathentry kind="lib" path="P:/Jars/mysql-connector-java-8.0.11.jar"/>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>

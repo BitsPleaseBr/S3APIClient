@@ -1,12 +1,6 @@
 package main;
 
-import com.google.gson.Gson;
 import ca.ryangreen.apigateway.generic.GenericApiGatewayException;
-import model.bean.EnderecoBean;
-import model.bean.TelefoneBean;
-import model.bean.info.EnderecoInfo;
-import model.bean.info.TelefoneInfo;
-import s3.api.access.MethodCallerFactory;
 
 public class Caller {
 
@@ -35,8 +29,8 @@ public class Caller {
       
       System.out.println(new Gson().newBuilder().setPrettyPrinting().create().toJson(tb));*/
       
-      System.out.println(MethodCallerFactory.verificarEmail("nathangabriel97@gmail.com").call().getResponse().getHttpResponse().getStatusCode() == 200);
-      System.out.println(MethodCallerFactory.verificarCpf("09792442936").call().getResponse().getHttpResponse().getStatusCode() == 200);
+      //System.out.println(MethodCallerFactory.verificarEmail("nathangabriel97@gmail.com").call().getResponse().getHttpResponse().getStatusCode() == 200);
+      //System.out.println(MethodCallerFactory.verificarCpf("057.575.029-40").call().getResponse().getHttpResponse().getStatusCode() == 200);
       
       /*PacienteBean pb = new PacienteBean();
       

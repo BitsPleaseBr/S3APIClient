@@ -52,11 +52,17 @@ public class RequestBuilder extends GenericApiGatewayRequestBuilder {
   
   public Headers getHeaders() {
 
+    if (this.headers == null)
+      this.headers = new Headers(this);
+    
     return this.headers;
   }
   
   public Body getBody() {
 
+    if (this.body == null)
+      this.body = new Body(this);
+    
     return this.body;
   }
 

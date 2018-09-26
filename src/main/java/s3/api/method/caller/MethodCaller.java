@@ -16,6 +16,7 @@ public class MethodCaller {
   
   private ClientBuilder clientBuilder = new ClientBuilder();
   private RequestBuilder requestBuilder = new RequestBuilder();
+  private static String token;
   
   
   public MethodCaller() {
@@ -60,6 +61,11 @@ public class MethodCaller {
     return this;
   }
   
+  public static void setToken(String token) {
+    
+    MethodCaller.token = token;
+  }
+  
   
   public ClientBuilder getClientBuilder() {
     
@@ -73,6 +79,9 @@ public class MethodCaller {
   
   
   public S3ApiResponse call() {
+    
+    if (MethodCaller.token != null)
+      requestBuilder.getHeaders().put("authorization", token);
     
     GenericApiGatewayRequest request = requestBuilder.build();
     S3ApiClient client = clientBuilder.s3Build();

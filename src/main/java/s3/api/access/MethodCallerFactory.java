@@ -24,7 +24,7 @@ import s3.api.method.resources.users.id.telefones.Telefones;
 import s3.api.method.resources.verificar.Verificar;
 
 public class MethodCallerFactory {
-
+  
 
   // users
   // users-post
@@ -244,5 +244,16 @@ public class MethodCallerFactory {
  public static MethodCaller confirmarEmail(String fullToken) {
 
    return new MethodCaller(Verificar.CONFIRMAR_EMAIL, new Body().put("token", fullToken));
+ }
+ 
+ 
+ public static void setToken(String token) {
+   
+   MethodCaller.setToken(token);
+ }
+ 
+ public static void removeToken() {
+   
+   MethodCaller.setToken(null);
  }
 }
