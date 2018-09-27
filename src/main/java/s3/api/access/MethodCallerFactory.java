@@ -243,7 +243,7 @@ public class MethodCallerFactory {
   
  public static MethodCaller confirmarEmail(String fullToken) {
 
-   return new MethodCaller(Verificar.CONFIRMAR_EMAIL, new Body().put("token", fullToken));
+   return new MethodCaller(Verificar.CONFIRMAR_EMAIL, new Body().put("token", fullToken)).withApiKey(true);
  }
  
  

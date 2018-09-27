@@ -23,5 +23,4 @@ public class Verificar extends Resource {
     
     return this.parentResource.getAbsolutePath() + "/verificacoes";
   }
-
 }
