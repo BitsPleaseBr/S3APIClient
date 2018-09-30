@@ -88,8 +88,6 @@ public class RequestBuilder extends GenericApiGatewayRequestBuilder {
     super.withHttpMethod(this.resource.getHttpMethod());
     super.withResourcePath(this.resource.getPath());
     
-    System.out.println(new Gson().newBuilder().setDateFormat("dd/MM/yyyy").create().toJson(this.body.getValues()));
-    
     return super.build();
   }
 }

@@ -49,12 +49,6 @@ public class MethodCaller {
     return this;
   }
   
-  public MethodCaller withApiKey(boolean apiKey) {
-    
-    this.clientBuilder.useApiKey(apiKey);
-    return this;
-  }
-  
   public MethodCaller withHeaders(Headers headers) {
     
     this.requestBuilder.withHeaders(headers);
@@ -80,8 +74,9 @@ public class MethodCaller {
   
   public S3ApiResponse call() {
     
-    if (MethodCaller.token != null)
+    if (MethodCaller.token != null) {
       requestBuilder.getHeaders().put("authorization", token);
+    }
     
     GenericApiGatewayRequest request = requestBuilder.build();
     S3ApiClient client = clientBuilder.s3Build();

@@ -52,7 +52,7 @@ public class MethodCallerFactory {
       body.put("infosPac", asPaciente.getInfosPac());
     }
 
-    return new MethodCaller(Users.CADASTRAR, body).withApiKey(true);
+    return new MethodCaller(Users.CADASTRAR, body);
   }
 
   // users/{id}
@@ -227,23 +227,23 @@ public class MethodCallerFactory {
     headers.put("email", email);
     headers.put("senha", senha);
 
-    return new MethodCaller(Tokens.SELECIONAR).withApiKey(true).withHeaders(headers);
+    return new MethodCaller(Tokens.SELECIONAR).withHeaders(headers);
   }
 
   // verificar
   public static MethodCaller verificarEmail(String email) {
 
-    return new MethodCaller(Verificar.EMAIL).withApiKey(true).putParameter("email", email);
+    return new MethodCaller(Verificar.EMAIL).putParameter("email", email);
   }
 
   public static MethodCaller verificarCpf(String cpf) {
 
-    return new MethodCaller(Verificar.CPF).withApiKey(true).putParameter("cpf", cpf);
+    return new MethodCaller(Verificar.CPF).putParameter("cpf", cpf);
   }
   
  public static MethodCaller confirmarEmail(String fullToken) {
 
-   return new MethodCaller(Verificar.CONFIRMAR_EMAIL, new Body().put("token", fullToken)).withApiKey(true);
+   return new MethodCaller(Verificar.CONFIRMAR_EMAIL, new Body().put("token", fullToken));
  }
  
  

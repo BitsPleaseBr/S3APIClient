@@ -1,6 +1,7 @@
 package main;
 
 import ca.ryangreen.apigateway.generic.GenericApiGatewayException;
+import s3.api.access.MethodCallerFactory;
 
 public class Caller {
 
@@ -8,6 +9,12 @@ public class Caller {
   public static void main(String[] args) {
 
     try {
+      
+      //System.out.println(new UserDao() {}.selecionar(8).getInfosUser());
+      
+      String token = (String) MethodCallerFactory.gerarToken("guhillesheim@gmail.com", "q1w2e3r4t5").call().getHashBody().get("token");
+      MethodCallerFactory.setToken(token);
+      System.out.println(MethodCallerFactory.selecionarDadosUsuario(8).call().getResponse().getBody());
       
       /*EnderecoBean eb = new EnderecoBean();
       eb.setInfo(EnderecoInfo.Cep, "123");

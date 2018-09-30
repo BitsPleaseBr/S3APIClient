@@ -14,7 +14,6 @@ public class ClientBuilder extends GenericApiGatewayClientBuilder {
   private String endpoint = "https://bh7xqk7gcj.execute-api.sa-east-1.amazonaws.com";
   private Region region = Region.getRegion(Regions.fromName("sa-east-1"));
   private MethodCaller methodCaller;
-  private boolean useApiKey = false;
 
 
   @Override
@@ -25,11 +24,6 @@ public class ClientBuilder extends GenericApiGatewayClientBuilder {
   @Override
   public GenericApiGatewayClientBuilder withRegion(Region region) {
     return this;
-  }
-
-  public void useApiKey(boolean useApiKey) {
-    
-    this.useApiKey = useApiKey;
   }
   
 
@@ -49,8 +43,7 @@ public class ClientBuilder extends GenericApiGatewayClientBuilder {
     super.withEndpoint(endpoint);
     super.withRegion(region);
     
-    if (useApiKey)
-      super.withApiKey(getS3ApiKey());
+    super.withApiKey(getS3ApiKey());
 
     return new S3ApiClient(super.build());
   }
